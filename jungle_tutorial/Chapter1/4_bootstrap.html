@@ -1,0 +1,163 @@
+<!--bootstrap은 css스타일을 지원해줌. 사이트에서 원하는 스타일을 보고 불러오기 가능-->
+
+
+<!doctype html>
+<html lang="en">
+<head>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+
+    <!-- 구글폰트 -->
+    <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+
+    <title>SW사관학교 정글 | 부트스트랩 연습하기</title>
+    <style>
+        * {
+            font-family: 'Jua', sans-serif;
+        }
+
+        .wrap {
+            width: 900px;
+            margin: 10px auto;
+        }
+
+        .comment {
+            color: blue;
+            font-weight: bold;
+        }
+
+        .myform {
+            margin: 10px auto 30px auto;
+            width: 500px;
+
+            border: 3px solid black;
+            border-radius: 5px;
+
+            padding: 25px;
+        }
+    </style>
+</head>
+
+<body>
+<div class="wrap">
+    <!-- jumbotron -->
+    <div class="jumbotron">
+        <h1 class="display-4">Jumbotron(대형전광판)</h1>
+        <p class="lead">맨 앞의 이 카드 형식은 Jumbotron이라고 부르는 듯 하다.</p>
+        <hr class="my-4">
+        <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+        <p class="lead">
+            <a class="btn btn-primary btn-lg" href="#" role="button">클릭</a>
+        </p>
+    </div>
+
+    <!-- form -->
+    <div class="myform">
+            <div class="form-group">
+                <label for="exampleFormControlTextarea1">아티클 URL</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlTextarea1">간단 코멘트</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">기사저장</button>
+    </div>
+
+
+    <div class="card-columns">
+        <div class="card">
+            <img class="card-img-top"
+                 src="https://www.ancient-origins.net/sites/default/files/field/image/Agesilaus-II-cover.jpg"
+                 alt="Card image cap">
+            <div class="card-body">
+                <a href="http://naver.com/" class="card-title">여기 기사 제목이 들어가죠</a>
+                <h5 class="card-title">Card title that wraps to a new line</h5>
+                <p class="card-text">아래에 추가 텍스트를 추가하기위한 자연스러운 안내문이 포함 된 긴 카드입니다.
+                    함유량. 이 내용은 조금 더 깁니다.</p>
+                <p class="card-text comment">여기에 코멘트가 들어갑니다.</p>
+            </div>
+        </div>
+        <div class="card">
+            <img class="card-img-top"
+                 src="https://www.ancient-origins.net/sites/default/files/field/image/Agesilaus-II-cover.jpg"
+                 alt="Card image cap">
+            <div class="card-body">
+                <a href="http://naver.com/" class="card-title">여기 기사 제목이 들어가죠</a>
+                <h5 class="card-title">Card title that wraps to a new line</h5>
+                <p class="card-text">아래에 추가 텍스트를 추가하기위한 자연스러운 안내문이 포함 된 긴 카드입니다.
+                    함유량. 이 내용은 조금 더 깁니다.</p>
+                <p class="card-text comment">여기에 코멘트가 들어갑니다.</p>
+            </div>
+        </div>
+        <div class="card">
+            <img class="card-img-top"
+                 src="https://www.ancient-origins.net/sites/default/files/field/image/Agesilaus-II-cover.jpg"
+                 alt="Card image cap">
+            <div class="card-body">
+                <a href="http://naver.com/" class="card-title">여기 기사 제목이 들어가죠</a>
+                <h5 class="card-title">Card title that wraps to a new line</h5>
+                <p class="card-text">아래에 추가 텍스트를 추가하기위한 자연스러운 안내문이 포함 된 긴 카드입니다.
+                    함유량. 이 내용은 조금 더 깁니다.</p>
+                <p class="card-text comment">여기에 코멘트가 들어갑니다.</p>
+            </div>
+        </div>
+        <div class="card">
+            <img class="card-img-top"
+                 src="https://www.ancient-origins.net/sites/default/files/field/image/Agesilaus-II-cover.jpg"
+                 alt="Card image cap">
+            <div class="card-body">
+                <a href="http://naver.com/" class="card-title">여기 기사 제목이 들어가죠</a>
+                <h5 class="card-title">Card title that wraps to a new line</h5>
+                <p class="card-text">아래에 추가 텍스트를 추가하기위한 자연스러운 안내문이 포함 된 긴 카드입니다.
+                    함유량. 이 내용은 조금 더 깁니다.</p>
+                <p class="card-text comment">여기에 코멘트가 들어갑니다.</p>
+            </div>
+        </div>
+        <div class="card">
+            <img class="card-img-top"
+                 src="https://www.ancient-origins.net/sites/default/files/field/image/Agesilaus-II-cover.jpg"
+                 alt="Card image cap">
+            <div class="card-body">
+                <a href="http://naver.com/" class="card-title">여기 기사 제목이 들어가죠</a>
+                <h5 class="card-title">Card title that wraps to a new line</h5>
+                <p class="card-text">아래에 추가 텍스트를 추가하기위한 자연스러운 안내문이 포함 된 긴 카드입니다.
+                    함유량. 이 내용은 조금 더 깁니다.</p>
+                <p class="card-text comment">여기에 코멘트가 들어갑니다.</p>
+            </div>
+        </div>
+        <div class="card">
+            <img class="card-img-top"
+                 src="https://www.ancient-origins.net/sites/default/files/field/image/Agesilaus-II-cover.jpg"
+                 alt="Card image cap">
+            <div class="card-body">
+                <a href="http://naver.com/" class="card-title">여기 기사 제목이 들어가죠</a>
+                <h5 class="card-title">Card title that wraps to a new line</h5>
+                <p class="card-text">아래에 추가 텍스트를 추가하기위한 자연스러운 안내문이 포함 된 긴 카드입니다.
+                    함유량. 이 내용은 조금 더 깁니다.</p>
+                <p class="card-text comment">여기에 코멘트가 들어갑니다.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+
+</html>
