@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <h1>서버를 만들었다!</h1>
+    <!--    <img src="../static/rome.jpg"/> 이건 기존 html 스타일-->
+    <img src="{{ url_for('static', filename='rome.jpg') }}"/>  <!--    이게 Flask 스타일, -->
+    <!--    위와 같이 적으면 flask가 html 정보를 보내줄 때 괄호 안의 내용을 상황에 맞게 바꿔 보내줍니다. 따옴표와 중괄호의 위치에 주의해 주세요. -->
+    <!--    이미지 뿐만 아니라 헤드에 넣는 CSS 파일 등의 링크도 형식에 맞게 바꿔 넣어야합니다. -->
+</body>
+</html>
