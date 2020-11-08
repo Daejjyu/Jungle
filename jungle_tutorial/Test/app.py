@@ -37,8 +37,6 @@ def post_article():
 def delete_article():
     title_receive = request.form['title_give']  # 클라이언트로부터 url을 받는 부분
     text_receive = request.form['text_give']  # 클라이언트로부터 comment를 받는 부분
-
-    db.users.delete_one({'name': title_receive})
     article = {'title': title_receive, 'text': text_receive}
 
     db.articles.delete_one(article)
@@ -58,8 +56,8 @@ def update_article():
     print(3, temp_title_receive)
     print(4, temp_text_receive)
 
-    db.users.update_one({'title': title_receive}, {'$set': {'text': temp_title_receive}})
-    db.users.update_one({'text': text_receive}, {'$set': {'title': temp_text_receive}})
+    db.articles.update_one({'title': title_receive}, {'$set': {'text': temp_text_receive}})
+    db.articles.update_one({'text': temp_text_receive}, {'$set': {'title': temp_title_receive}})
 
     return jsonify({'result': 'success'})
 

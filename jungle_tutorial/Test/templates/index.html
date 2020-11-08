@@ -112,18 +112,15 @@
 
                 let view1Id = nCard.children().eq(0);
                 let view2Id = nCard.children().eq(1);
-                console.log(view1Id)
-                console.log(view2Id)
-
 
                 let title = $(view1Id).children().eq(0).children("#post-title").eq(0)[0].textContent;
                 let text = $(view1Id).children().eq(0).children("#post-text").eq(0)[0].textContent;
-                let title_temp = $(view2Id).children().eq(0).children("#post-title-temp").eq(0)[0].textContent;
-                let text_temp = $(view2Id).children().eq(0).children("#post-text-temp").eq(0)[0].textContent;
-                console.log(title);
-                console.log(text);
-                console.log(title_temp);
-                console.log(text_temp);
+                let title_temp = $(view2Id).children().eq(0).children("#post-title-temp").val();
+                let text_temp = $(view2Id).children().eq(0).children("#post-text-temp").val();
+                // console.log(title);
+                // console.log(text);
+                // console.log(title_temp);
+                // console.log(text_temp);
 
 
                 $.ajax({
@@ -138,7 +135,7 @@
                     success: function (response) {
                         if (response["result"] == "success") {
                             alert("수정 완료!");
-                            // window.location.reload();
+                            window.location.reload();
                         } else {
                             alert("서버 오류!")
                         }
