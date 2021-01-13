@@ -5,55 +5,48 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
+//#define min_degree 2
 int min_degree;
 int size;
-//#define min_degree = 2  //const
-
-/* structures */
+int* database;
 
 struct Node {
 	bool leaf;
 	int key_len;
-	int child_len;
+	int ptr_len;
 	int* key_arr;
-	struct Node** child_arr;
-
-	////use this when use const array
-	//int key_arr[2 * min_degree -1];
-	//struct Node* child_arr[2 * min_degree -1];
+	struct node** ptr_arr;
+	/*int key_arr[2 * min_degree - 1];
+	struct Node* ptr_arr[2 * min_degree];*/
+	struct Node* next_node;
+	struct Node* prev_node;
 };
 
-struct B_tree {
+struct BP_tree {
 	struct Node* root;
-};
-
-struct Searched {
-	struct Node* node;
-	int index;
+	struct Node* head;
 };
 
 /* functions */
 
 // Create
-struct B_tree CreateTree();
+struct BP_tree CreateTree();
 struct Node* CreateNode();
 
 // Search
 void Visual(struct Node* node, int level);
+void Visual_head(struct BP_tree* tree);
 bool Search(struct Node* node, int key);
 
 // Insert
-void InsertKey(struct B_tree* tree, int key);
+void InsertKey(struct BP_tree* tree, int key);
 void NonFull(struct Node* node, int key);
 void SplitChild(struct Node* node_x, int index);
 
 // Delete
-void Delete_key(struct B_tree* tree, struct Node* x, int key);
+void Delete_key(struct BP_tree* tree, struct Node* x, int key);
 void Borrow_Right(struct Node* x, int idx);
 void Borrow_Left(struct Node* x, int idx);
-bool Change_Root(struct B_tree* tree, struct Node* x);
-void merge(struct Node* x, int idx);
-int Succ(struct Node* child_x);
-int Pred(struct Node* child_x);
-
+bool Change_Root(struct BP_tree* tree, struct Node* x);
+void free_node(struct Node* node);
 #endif //BP_TREE_H

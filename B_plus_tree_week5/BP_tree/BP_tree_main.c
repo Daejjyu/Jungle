@@ -1,16 +1,16 @@
 #include "BP_tree.h"
-
+#include<time.h>
 int main() {
 	// 1. Input Min_degree
-	printf("***************************\n");
+	printf("******* B+ Tree **********\n");
 	printf("* Enter the min_degree:  ");
 	scanf_s("%d", &min_degree);
 	printf("* Enter the size of B- Tree:  ");
 	scanf_s("%d", &size);
 
 	// 2. Create random_tree
-	int* random_arr = (int*)malloc(sizeof(int) * size * 2);
-	struct B_tree B_Tree = CreateTree();
+	int* random_arr = (int*)malloc(sizeof(int) * size);
+	struct BP_tree BP_tree = CreateTree();
 	printf("\n**********Init Tree**********\n");
 
 	for (int i = 0; i < size; i++) {
@@ -26,7 +26,7 @@ int main() {
 	for (int i = 0; i < size; i++) {
 		int r = random_arr[i];
 		printf("%d ", r);
-		InsertKey(&B_Tree, r);
+		InsertKey(&BP_tree, r);
 	}
 
 	int mode = 0;
@@ -34,7 +34,7 @@ int main() {
 	// UI
 	while (1) {
 		printf("\n\n*** Current Tree ***\n");
-		Visual(B_Tree.root, 0);
+		Visual(BP_tree.root, 0);
 		printf("*****************\n");
 		printf("** Select ** \n");
 		printf("1. Insert num\n");
@@ -52,7 +52,7 @@ int main() {
 			printf("Insert: Enter int Number:  ");
 			int Ins_num;
 			scanf_s("%d", &Ins_num);
-			InsertKey(&B_Tree, Ins_num);
+			InsertKey(&BP_tree, Ins_num);
 			printf("\n*****************\n");
 			break;
 		case 2: // Delete key
@@ -60,8 +60,8 @@ int main() {
 			printf("Delete: Enter int Number:  ");
 			int del_num;
 			scanf_s("%d", &del_num);
-			if (Search(B_Tree.root, del_num)) {
-				Delete_key(&B_Tree, B_Tree.root, del_num);
+			if (Search(BP_tree.root, del_num)) {
+				Delete_key(&BP_tree, BP_tree.root, del_num);
 			}
 			else {
 				printf("\nDelete: Number not found\n");
@@ -69,7 +69,7 @@ int main() {
 			printf("\n*****************\n");
 			break;
 		case 3: // Delete all
-			B_Tree = CreateTree();
+			BP_tree = CreateTree();
 			printf("** Delete all");
 			break;
 		case 4:
