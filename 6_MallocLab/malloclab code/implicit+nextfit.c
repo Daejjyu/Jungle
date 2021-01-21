@@ -57,6 +57,14 @@ int mm_init(void)
     if(extend_heap(CHUNKSIZE/WSIZE)==NULL)
         return -1;
     return 0;
+    /*
+    저는 init함수에서 패딩과 프롤로그 블럭을 먼저 만들고 
+    heap_listp를 프롤로그 블럭의 헤더와 풋터 사이에 위치시키 후에
+    next_ptr(이 코드에서 last_freep)를 heap_listp로 초기화해주었습니다.
+    
+    이 과정을 제일 첫 줄의 코드에서 해주신 것 같은데 초기화 없이도 연산이 되는군요..! 새로운 사실 배워갑니다.
+
+    */
 }
 
 static void* extend_heap(size_t words)
@@ -71,6 +79,10 @@ static void* extend_heap(size_t words)
     PUT(HDRP(NEXT_BLKP(bp)), PACK(0, 1));
     last_freep= bp;
     return coalesce(bp);
+    /*
+    83라인에서 last_freep를 bp로 옮겨주셨는데 제 코드에는 이 과정이 없었습니다. 그래서 왜 그런지 생각해봤는데 아직 이유를 잘 모르겠습니다.
+    next_fit이라서 블럭이 확장될 때마다 last_freep를 옮겨주신걸까요?
+    */
 }
 
 void mm_free(void* bp)
@@ -79,6 +91,9 @@ void mm_free(void* bp)
     PUT(HDRP(bp), PACK(size, 0));
     PUT(FTRP(bp), PACK(size, 0));
     coalesce(bp);
+    /*
+    제 free와 같습니다:)
+    */
 }
 
 static void* coalesce(void *bp)
@@ -106,6 +121,17 @@ static void* coalesce(void *bp)
         bp = PREV_BLKP(bp);
     }
         return last_freep=bp;
+    /*
+        각 분기에서 필요한 경우 last_freep를 bp로 초기화해주셨군요! 
+        저는 if else문이 끝나고 나서
+
+        if ((next_ptr > (char*)bp) && (next_ptr < NEXT_BLKP(bp))){
+        next_ptr = bp;
+
+        이런 조건을 넣어서 필요한 경우 last_freep를 bp로 옮겨주었습니다.
+        참고하시면 좋을 것 같습니다.
+    }
+        */
 }
 
 void* mm_malloc(size_t size)
@@ -128,6 +154,9 @@ void* mm_malloc(size_t size)
         return NULL;
     place(bp, asize);
     return bp;
+    /*
+    제 malloc과 같습니다:)
+    */
 }
 
 static void *find_fit(size_t asize)
@@ -143,6 +172,25 @@ static void *find_fit(size_t asize)
         }
     }
    return NULL;
+   /*
+   while문으로 구현하셨군요! for문 두 개로 구현하는 것 보다 훨씬 가독성이 좋은 것 같습니다.
+
+   for (; GET_SIZE(HDRP(next_ptr)) > 0; next_ptr = NEXT_BLKP(next_ptr)){
+        if (!GET_ALLOC(HDRP(next_ptr)) && (asize <= GET_SIZE(HDRP(next_ptr)))){
+            return next_ptr;
+        }
+    }
+    for (next_ptr = heap_listp; next_ptr < bp; next_ptr = NEXT_BLKP(next_ptr))
+    {
+        if (!GET_ALLOC(HDRP(next_ptr)) && (asize <= GET_SIZE(HDRP(next_ptr)))){
+            return next_ptr;
+        }
+    }
+
+    같은 내용을 담고 있는 코드인데 저는 이렇게 구현하였습니다. 잘 구현하신 것 같아요!
+    
+    사이즈가 0인 에필로그 블럭을 만나는 경우에 bp를 heap_listp로 옮겨주신 것 같습니다. 
+   */
 }
 
 static void place(void* bp, size_t asize)
@@ -161,6 +209,9 @@ static void place(void* bp, size_t asize)
         PUT(HDRP(bp), PACK(csize, 1));
         PUT(FTRP(bp), PACK(csize, 1));
     }
+    /*
+    제 코드와 같습니다:)
+    */
 }
 
 void* mm_realloc(void* bp, size_t size)
@@ -177,4 +228,9 @@ void* mm_realloc(void* bp, size_t size)
 	memcpy(new_dp, old_dp, copySize);
 	mm_free(old_dp);
 	return new_dp;
+    /*
+    이번 한 주도 고생하셨습니다~!
+    전체적으로 잘 만드신 코드인 것 같습니다. 변수명도 명확해서 코드를 읽는데 큰 어려움이 없었습니다.
+    find_fit 코드를 특히 잘 만들어주신 것 같습니다:)
+    */
 }
