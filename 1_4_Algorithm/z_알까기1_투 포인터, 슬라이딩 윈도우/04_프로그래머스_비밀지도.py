@@ -1,4 +1,4 @@
-# 13분
+# 13분 소요
 # s[::-1] string reverse 문법 서핑하였음
 def solution(n, arr1, arr2):
     answer = []
