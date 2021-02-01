@@ -1,7 +1,6 @@
 # input 부터 받고 생각. 딕셔너리에 리스트 넣는 것이 생각처럼 잘 안되서 50분 걸렸다
 import sys
 
-def solve():
 input = sys.stdin.readline
 
 w,h,W,H = map(int,input().split())
