@@ -2,7 +2,7 @@ import sys
 def solve():
     input = sys.stdin.readline
 
-    N,M,K =map(int,input().split())
+    N,M,K = map(int,input().split())
     parent = list(map(lambda x:x* -1, map(int,input().split())))
     def find(n):
         if(parent[n]<0):
